@@ -15,29 +15,6 @@ Fırlat
   <img alt="Fırlat on the host computer: a striped loading dock with Choose files, Folder and Text buttons and a recipient list, a board of shipping labels (a text from Pixel 8, a link from iPad, a video sent to Study PC, three photos), a printed Connect a phone label with a QR code and the pairing code, and the list of devices on the network." src="assets/screens/board-light.png">
 </picture>
 
-<table>
-<tr>
-<td width="33%">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screens/phone-dark.png">
-  <img alt="The phone view: the loading dock with File or photo and Text, the recipient list, and the board of labels." src="assets/screens/phone-light.png">
-</picture>
-</td>
-<td width="33%">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screens/sending-dark.png">
-  <img alt="A phone sending two files: the transfer rides a conveyor belt, with speed, time left and a bar per file." src="assets/screens/sending-light.png">
-</picture>
-</td>
-<td width="33%">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screens/pair-dark.png">
-  <img alt="Pairing a new device: six stencilled digit boxes for the code shown on the host, and the device's random name." src="assets/screens/pair-light.png">
-</picture>
-</td>
-</tr>
-</table>
-
 ## What it does
 
 - **Files, folders and text.** Drop anything on the page, pick files or a whole folder, or paste with <kbd>Ctrl</kbd> <kbd>V</kbd>. Links open in one tap; text copies in one tap.
