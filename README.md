@@ -53,11 +53,6 @@ On Windows you can double-click `baslat.bat` instead. The browser opens `http://
 
 ## How it works
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screens/receiving-dark.png">
-  <img alt="The host while a phone sends two files: each one prints out of a slot as a label with its own progress bar, above the board." src="assets/screens/receiving-light.png">
-</picture>
-
 1. **One host.** The computer running `server.py` serves the interface, stores received files and keeps the board in `data/index.json`.
 2. **Pairing.** Devices other than the host must enter the pairing code. It changes on every start, and the QR code carries it in the link. A correct code sets an HttpOnly cookie, so the device stays paired. Eight wrong codes from one address lock pairing for five minutes.
 3. **Transfers.** Uploads are raw `PUT` requests streamed to disk in 1 MiB chunks, written to a `.part` file and renamed when complete. Downloads support HTTP ranges. A batch downloads as a streamed ZIP without compression.
