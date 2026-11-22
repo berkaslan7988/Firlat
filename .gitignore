@@ -1,0 +1,13 @@
+# your own board, pairing secret and received files never go into git
+data/
+*.part
+
+# frontend build inputs (static/ is the built UI and IS committed, so running needs no Node)
+frontend/node_modules/
+
+# tooling
+__pycache__/
+*.pyc
+tools/.cache/
+.DS_Store
+Thumbs.db

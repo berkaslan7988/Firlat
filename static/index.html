@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#e8dfcf" />
+    <title>Fırlat</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      try {
+        var p = JSON.parse(localStorage.getItem('firlat.theme') || '"system"')
+        var d = p === 'dark' || (p === 'system' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.dataset.theme = d ? 'dark' : 'light'
+        if (d) document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        var l = JSON.parse(localStorage.getItem('firlat.lang') || 'null')
+        if (!l) l = (navigator.languages || [navigator.language]).some(function (x) { return /^tr\b/i.test(x || '') }) ? 'tr' : 'en'
+        document.documentElement.lang = l
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/assets/index-Oq8HAtT6.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CE6q6EOe.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
