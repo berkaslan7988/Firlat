@@ -23,9 +23,16 @@
   --bad: #c2261d;
   --bad-soft: rgba(194, 38, 29, .1);
   --tape: rgba(196, 168, 120, .85);
+  /* "Connect a phone": a printed label. In light it is white paper with black rules;
+     in dark it is a dark label like the rest, and only the QR keeps a light sticker. */
   --paper: #fffdf8;
   --paper-ink: #141414;
   --paper-3: #5e5a52;
+  --paper-edge: #141414;
+  --paper-rule: #141414;
+  --paper-hover: rgba(0, 0, 0, .05);
+  --qr-sticker: transparent;
+  --qr-pad: 0px;
   --overlay: rgba(20, 20, 20, .45);
   --shadow: 0 2px 0 rgba(20, 20, 20, .1);
   --shadow-lg: 0 24px 60px -20px rgba(20, 20, 20, .45);
@@ -58,10 +65,15 @@
   --on-accent: #06140b;
   --bad: #ff6b5e;
   --bad-soft: rgba(255, 107, 94, .1);
-  --tape: rgba(196, 168, 120, .7);
-  --paper: #efede8;
-  --paper-ink: #111111;
-  --paper-3: #555350;
+  --tape: rgba(196, 168, 120, .55);
+  --paper: #151515;
+  --paper-ink: #efede8;
+  --paper-3: #9a968f;
+  --paper-edge: #3a3a3a;
+  --paper-rule: #2a2a2a;
+  --paper-hover: #1b1b1b;
+  --qr-sticker: #e4e1da;
+  --qr-pad: 9px;
   --overlay: rgba(0, 0, 0, .6);
   --shadow: none;
   --shadow-lg: 0 24px 60px -20px rgba(0, 0, 0, .8);
@@ -381,38 +393,37 @@ kbd {
   position: relative;
   background: var(--paper);
   color: var(--paper-ink);
-  border: 1.5px solid var(--paper-ink);
+  border: 1.5px solid var(--paper-edge);
   border-radius: var(--r);
   box-shadow: var(--shadow);
   --ink: var(--paper-ink);
   --ink-3: var(--paper-3);
-  --edge: var(--paper-ink);
-  --label-2: rgba(0, 0, 0, .05);
-  --accent-ink: #0b7a3b;
+  --edge: var(--paper-edge);
+  --label-2: var(--paper-hover);
 }
 .connect .tape { position: absolute; top: -12px; left: 50%; width: 118px; height: 26px; margin-left: -59px; background: var(--tape); transform: rotate(-3deg); }
-.connect-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 20px 20px 12px; border-bottom: 2px solid var(--paper-ink); }
+.connect-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 20px 20px 12px; border-bottom: 2px solid var(--paper-edge); }
 .connect-head h2 { font-weight: 900; font-size: 2rem; line-height: .95; }
 .connect-head .eyebrow { text-align: right; line-height: 1.5; color: var(--paper-ink); }
-.qr-row { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-bottom: 1px solid var(--paper-ink); }
-.qr { width: 156px; flex: none; }
+.qr-row { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-bottom: 1px solid var(--paper-rule); }
+.qr { width: calc(156px + 2 * var(--qr-pad)); flex: none; padding: var(--qr-pad); background: var(--qr-sticker); border-radius: 4px; }
 .qr canvas { display: block; width: 100% !important; height: auto !important; image-rendering: pixelated; }
 .qr-row p { font-size: .9rem; color: var(--paper-3); }
-.cells { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border-bottom: 1px solid var(--paper-ink); }
+.cells { display: grid; grid-template-columns: max-content minmax(0, 1fr); border-bottom: 1px solid var(--paper-rule); }
 .cell { padding: 12px 20px; min-width: 0; }
-.cell + .cell { border-left: 1px solid var(--paper-ink); }
+.cell + .cell { border-left: 1px solid var(--paper-rule); }
 .code { font: 900 2.6rem var(--f-stencil); letter-spacing: .04em; line-height: 1.05; white-space: nowrap; }
-.addr { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 20px; border-bottom: 1px solid var(--paper-ink); }
+.addr { display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 20px; border-bottom: 1px solid var(--paper-rule); }
 .addr code { display: block; font: 600 1rem var(--f-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .addr .icon-btn { margin-left: auto; }
-.ips { padding: 10px 20px; border-bottom: 1px solid var(--paper-ink); font-size: .88rem; }
+.ips { padding: 10px 20px; border-bottom: 1px solid var(--paper-rule); font-size: .88rem; }
 .ips summary { cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
 .ips ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
 .ips li button { font: 400 .82rem var(--f-mono); background: none; border: 0; padding: 4px 0; color: var(--paper-ink); }
 .ips li button[aria-pressed="true"] { font-weight: 600; }
 .save { padding: 12px 20px 14px; font-size: .88rem; overflow-wrap: anywhere; }
 .save .mono { font-size: .8rem; }
-.hint { display: flex; gap: 10px; padding: 12px 20px; border-bottom: 1px solid var(--paper-ink); font-size: .84rem; color: var(--paper-3); }
+.hint { display: flex; gap: 10px; padding: 12px 20px; border-bottom: 1px solid var(--paper-rule); font-size: .84rem; color: var(--paper-3); }
 .hint svg { flex: none; margin-top: 2px; }
 
 /* devices */
@@ -455,7 +466,7 @@ button.dev[aria-pressed="true"] { background: var(--accent-soft); }
   .lang-switch button { min-width: 34px; padding: 0 7px; }
   .dock-actions .btn { flex: 1 1 auto; }
   .code { font-size: 2.2rem; }
-  .qr { width: 132px; }
+  .qr { width: calc(132px + 2 * var(--qr-pad)); }
 }
 
 /* ---------------------------------------------------------------- overlays */
